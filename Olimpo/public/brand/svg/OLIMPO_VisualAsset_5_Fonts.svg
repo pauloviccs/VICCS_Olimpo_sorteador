@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_2" data-name="Camada 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1328.18 565.93">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: Agenor-Regular, Agenor;
+        font-size: 79.26px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: #f7ead8;
+      }
+
+      .cls-4 {
+        letter-spacing: .1em;
+      }
+
+      .cls-5 {
+        letter-spacing: .09em;
+      }
+
+      .cls-6 {
+        letter-spacing: .09em;
+      }
+
+      .cls-7 {
+        letter-spacing: .05em;
+      }
+
+      .cls-2 {
+        font-size: 162.68px;
+      }
+
+      .cls-2, .cls-3 {
+        font-family: Inter-Regular, Inter;
+      }
+
+      .cls-8 {
+        letter-spacing: .09em;
+      }
+
+      .cls-9 {
+        letter-spacing: .1em;
+      }
+
+      .cls-10 {
+        letter-spacing: .1em;
+      }
+
+      .cls-11 {
+        letter-spacing: .1em;
+      }
+
+      .cls-3 {
+        font-size: 130.92px;
+      }
+
+      .cls-12 {
+        letter-spacing: .09em;
+      }
+
+      .cls-13 {
+        letter-spacing: .09em;
+      }
+
+      .cls-14 {
+        letter-spacing: .1em;
+      }
+    </style>
+  </defs>
+  <g id="Elements">
+    <g>
+      <text class="cls-2" transform="translate(0 513.93)"><tspan class="cls-9" x="0" y="0">In</tspan><tspan class="cls-8" x="170.72" y="0">t</tspan><tspan class="cls-9" x="245.23" y="0">er - </tspan><tspan class="cls-12" x="648.24" y="0">R</tspan><tspan class="cls-14" x="767.57" y="0">egular</tspan></text>
+      <text class="cls-3" transform="translate(129.66 268.52)"><tspan class="cls-11" x="0" y="0">In</tspan><tspan class="cls-6" x="137.39" y="0">t</tspan><tspan class="cls-10" x="197.35" y="0">er - </tspan><tspan class="cls-13" x="521.68" y="0">R</tspan><tspan class="cls-11" x="617.71" y="0">egular</tspan></text>
+      <text class="cls-1" transform="translate(180.81 68.68)"><tspan class="cls-7" x="0" y="0">A</tspan><tspan class="cls-4" x="65.55" y="0">genor - Regul</tspan><tspan class="cls-5" x="841.03" y="0">a</tspan><tspan class="cls-4" x="909.51" y="0">r</tspan></text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_2" data-name="Camada 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1586.81 1059.65">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Gradiente_sem_nome_16_cópia);
+      }
+
+      .cls-2 {
+        fill: #39173d;
+      }
+
+      .cls-3 {
+        fill: url(#Gradiente_sem_nome_3_cópia);
+      }
+
+      .cls-4 {
+        fill: #662771;
+      }
+
+      .cls-5 {
+        fill: url(#Gradiente_sem_nome_12);
+      }
+
+      .cls-6 {
+        fill: #f7ead8;
+      }
+    </style>
+    <linearGradient id="Gradiente_sem_nome_3_cópia" data-name="Gradiente sem nome 3 cópia" x1="1251.89" y1="379.79" x2="1251.89" y2="1049.64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8d292"/>
+      <stop offset="1" stop-color="#c49146"/>
+    </linearGradient>
+    <linearGradient id="Gradiente_sem_nome_12" data-name="Gradiente sem nome 12" x1="717.19" y1="300.77" x2="717.19" y2="769.04" gradientUnits="userSpaceOnUse">
+      <stop offset=".12" stop-color="#442149"/>
+      <stop offset=".91" stop-color="#2d0f2e"/>
+    </linearGradient>
+    <linearGradient id="Gradiente_sem_nome_16_cópia" data-name="Gradiente sem nome 16 cópia" x1="375.13" y1="293.22" x2="375.13" y2="761.49" gradientUnits="userSpaceOnUse">
+      <stop offset=".12" stop-color="#7f3b8e"/>
+      <stop offset=".69" stop-color="#5c2762"/>
+      <stop offset=".91" stop-color="#4e2051"/>
+    </linearGradient>
+  </defs>
+  <g id="Elements">
+    <g>
+      <g>
+        <rect class="cls-2" x="0" y="660.1" width="114.98" height="114.98" rx="11.43" ry="11.43"/>
+        <rect class="cls-4" x="0" y="802.39" width="114.98" height="114.98" rx="11.43" ry="11.43"/>
+        <rect class="cls-6" x="0" y="944.67" width="114.98" height="114.98" rx="11.43" ry="11.43"/>
+      </g>
+      <rect class="cls-3" x="916.96" y="389.8" width="669.85" height="669.85" rx="28.29" ry="28.29"/>
+      <g>
+        <rect class="cls-5" x="574.9" y="7.55" width="284.59" height="1052.1" rx="28.29" ry="28.29"/>
+        <rect class="cls-1" x="232.83" y="0" width="284.59" height="1052.1" rx="28.29" ry="28.29"/>
+      </g>
+    </g>
+  </g>
+</svg>

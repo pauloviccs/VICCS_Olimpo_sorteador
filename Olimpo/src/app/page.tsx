@@ -435,37 +435,6 @@ export default function OlimpoSorteadorApp() {
               </p>
             </div>
 
-            {/* Caixa de Detalhes da Conexão Meta */}
-            <div className="max-w-xl mx-auto rounded-2xl bg-[#200a21]/80 border border-white/10 p-5 text-left space-y-4 relative z-10">
-              <div className="flex items-center justify-between pb-3 border-b border-white/10">
-                <div className="flex items-center gap-2 text-xs font-bold text-white">
-                  <MetaIcon className="w-4 h-4 text-sky-400" />
-                  <span>Aplicativo Meta Registrado</span>
-                </div>
-                <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono border border-emerald-500/30">
-                  App ID: 28628987183389511
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-[#d8c3ad]">
-                <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-[#f8d292] shrink-0 mt-0.5" />
-                  <span>Permissões: <strong>instagram_basic</strong> e <strong>instagram_manage_comments</strong></span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-[#f8d292] shrink-0 mt-0.5" />
-                  <span>Tokens Long-Lived (60 dias) com <strong>AES-256</strong></span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-[#f8d292] shrink-0 mt-0.5" />
-                  <span>Zero risco de bloqueio (Sem automação pirata)</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-[#f8d292] shrink-0 mt-0.5" />
-                  <span>Banco Supabase Postgres com RLS ativo</span>
-                </div>
-              </div>
-            </div>
 
             {/* Ação Primária Centralizada (The "North Star" Action) */}
             <div className="relative z-10 flex flex-col items-center justify-center gap-3 pt-2">
@@ -897,11 +866,34 @@ export default function OlimpoSorteadorApp() {
       {/* FOOTER OFICIAL INSTITUCIONAL                                         */}
       {/* -------------------------------------------------------------------- */}
       <footer className="border-t border-white/10 bg-[rgba(32,10,33,0.9)] py-6 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#d8c3ad]">
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#d8c3ad]">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 sm:gap-3">
             <span>© 2026 Olimpo Açaíteria &amp; Sorveteria</span>
-            <span className="text-white/30">•</span>
-            <span>Desenvolvido pela VICCS Design</span>
+            <span className="text-white/20 hidden xs:inline">•</span>
+            <div className="flex items-center gap-1.5 flex-wrap justify-center">
+              <span className="text-white/60">Desenvolvido por</span>
+              <a
+                href="https://viccsdesign.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Acessar VICCS Design — Todos os direitos reservados © 2026"
+                className="inline-flex items-center gap-1.5 text-white hover:text-[#f8d292] font-semibold transition-all group px-2 py-1 rounded-lg hover:bg-white/5 border border-transparent hover:border-[#f8d292]/30 cursor-pointer"
+              >
+                <div className="relative w-4 h-4 shrink-0 transition-transform group-hover:scale-110">
+                  <Image
+                    src="/brand/viccs/VICCS_Design_Isotipo_WHITE.svg"
+                    alt="VICCS Design Logo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <span className="font-medium tracking-wide">VICCS Design</span>
+                <span className="text-[11px] text-white/50 group-hover:text-[#f8d292]/90 font-mono">
+                  © 2026
+                </span>
+                <ExternalLink className="w-3 h-3 opacity-40 group-hover:opacity-100 transition-opacity ml-0.5 text-[#f8d292]" />
+              </a>
+            </div>
           </div>
           <div className="flex items-center gap-2 text-[#d8c3ad]/70">
             <ShieldCheck className="w-3.5 h-3.5 text-[#f8d292]" />

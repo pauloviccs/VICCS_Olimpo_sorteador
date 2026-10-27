@@ -61,7 +61,7 @@ function MetaIcon({ className = "w-4 h-4" }: { className?: string }) {
 const DEFAULT_POST = {
   id: "post_olimpo_promo_verao",
   permalink: "https://instagram.com/p/olimpo_sorteio_oficial",
-  caption: "🍧 SORTEIO OFICIAL OLIMPO! 🍧 Quer ganhar 1 ano de açaí grátis e nosso combo especial? Marque 2 amigos nos comentários e use a hashtag #OlimpoAcai!",
+  caption: "SORTEIO OFICIAL OLIMPO! Quer ganhar 1 ano de açaí grátis e nosso combo especial? Marque 2 amigos nos comentários e use a hashtag #OlimpoAcai!",
   mediaUrl: "/brand/2x/OLIMPO_VisualAsset_0_Logo_Circular_Colored_b@2x.png",
   totalComments: 1420,
   publishedAt: "Hoje às 10:00",
@@ -380,7 +380,7 @@ export default function OlimpoSorteadorApp() {
                   {connectionError}
                 </p>
                 <p className="text-[11px] text-red-300/90 leading-relaxed">
-                  💡 <strong>Solução Rápida:</strong> Certifique-se de que a URI de redirecionamento abaixo está autorizada no painel de desenvolvedores da Meta (<strong>Meta for Developers &gt; Seu App (ID: 28628987183389511) &gt; Caso de Uso Instagram / Login &gt; Configurações &gt; URIs de redirecionamento do OAuth válidos</strong>):
+                  <strong>Solução Rápida:</strong> Certifique-se de que a URI de redirecionamento abaixo está autorizada no painel de desenvolvedores da Meta (<strong>Meta for Developers &gt; Seu App (ID: 28628987183389511) &gt; Caso de Uso Instagram / Login &gt; Configurações &gt; URIs de redirecionamento do OAuth válidos</strong>):
                 </p>
                 <div className="flex items-center gap-2 pt-0.5">
                   <code className="text-[#f8d292] bg-black/60 px-2 py-1 rounded font-mono text-[11px] border border-white/10 select-all">
@@ -421,11 +421,6 @@ export default function OlimpoSorteadorApp() {
                 </div>
               </div>
 
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#662771]/50 border border-[#f8d292]/30 text-[#f8d292]">
-                <ShieldCheck className="w-4 h-4 text-[#f8d292]" />
-                <span>Meta Graph API v21.0 Oficial • 100% Auditável</span>
-              </div>
-
               <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white font-display max-w-2xl leading-tight">
                 Portal de Sorteios da <span className="gold-gradient-text">Olimpo</span>
               </h1>
@@ -462,8 +457,9 @@ export default function OlimpoSorteadorApp() {
               </p>
             </div>
 
-            <p className="text-[11px] text-[#d8c3ad]/70 relative z-10">
-              🔒 Ao conectar, você será redirecionado para a tela oficial de login da Meta para conceder autorização aos comentários.
+            <p className="text-[11px] text-[#d8c3ad]/70 relative z-10 inline-flex items-center justify-center gap-1.5">
+              <Lock className="w-3.5 h-3.5 text-[#f8d292]/70 shrink-0" />
+              <span>Ao conectar, você será redirecionado para a tela oficial de login da Meta para conceder autorização aos comentários.</span>
             </p>
           </section>
         </main>
@@ -739,7 +735,7 @@ export default function OlimpoSorteadorApp() {
                         <div className="h-full bg-gradient-to-r from-emerald-400 to-[#f8d292] w-[0.8%]" />
                       </div>
                       <p className="text-[11px] text-[#d8c3ad] leading-relaxed">
-                        💡 <strong>Guarda-Corpo Ativo:</strong> Todos os assets da marca Olimpo são servidos estaticamente através de CDN global de alta velocidade, garantindo apurações instantâneas.
+                        <strong>Guarda-Corpo Ativo:</strong> Todos os assets da marca Olimpo são servidos estaticamente através de CDN global de alta velocidade, garantindo apurações instantâneas.
                       </p>
                     </div>
                   </div>

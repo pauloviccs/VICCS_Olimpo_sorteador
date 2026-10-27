@@ -24,8 +24,6 @@ import {
   LogOut,
   ArrowRight,
   Check,
-  KeyRound,
-  Database,
   Radio,
 } from "lucide-react";
 
@@ -270,12 +268,13 @@ export default function OlimpoSorteadorApp() {
   return (
     <div className="min-h-screen flex flex-col text-[#f7ead8]">
       {/* -------------------------------------------------------------------- */}
-      {/* HEADER PRINCIPAL                                                     */}
+      {/* HEADER PRINCIPAL RESPONSIVO                                          */}
       {/* -------------------------------------------------------------------- */}
       <header className="sticky top-0 z-40 border-b border-[rgba(248,210,146,0.15)] bg-[rgba(32,10,33,0.85)] backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="relative w-12 h-12 rounded-full overflow-hidden border border-[#f8d292]/40 shadow-md">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-2 sm:gap-4">
+          {/* Identidade Visual / Marca Olimpo */}
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border border-[#f8d292]/40 shadow-md shrink-0">
               <Image
                 src="/brand/svg/OLIMPO_VisualAsset_0_Logo_Circular_Colored_a.svg"
                 alt="Logo Olimpo"
@@ -285,26 +284,29 @@ export default function OlimpoSorteadorApp() {
               />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="font-extrabold tracking-wider text-lg text-white font-display">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="font-extrabold tracking-wider text-base sm:text-lg text-white font-display">
                   OLÍMPO
                 </span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-[#662771]/60 text-[#f8d292] border border-[#f8d292]/30 font-medium">
+                <span className="text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full bg-[#662771]/60 text-[#f8d292] border border-[#f8d292]/30 font-medium">
                   SORTEADOR
                 </span>
               </div>
-              <p className="text-xs text-[#d8c3ad] tracking-wide">
+              <p className="text-[11px] sm:text-xs text-[#d8c3ad] tracking-wide hidden xs:block">
                 Açaíteria &amp; Sorveteria Oficial
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          {/* Ações Superiores (Totalmente Responsivas com Breakpoints) */}
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             {connectedUser ? (
-              <div className="flex items-center gap-2.5">
-                <div className="flex items-center gap-2 text-xs text-emerald-300 bg-emerald-950/40 px-3 py-1.5 rounded-lg border border-emerald-500/30">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="font-semibold">{connectedUser}</span>
+              <div className="flex items-center gap-1.5 sm:gap-2.5">
+                <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-emerald-300 bg-emerald-950/40 px-2 sm:px-3 py-1.5 rounded-lg border border-emerald-500/30">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                  <span className="font-semibold max-w-[90px] xs:max-w-[130px] sm:max-w-none truncate">
+                    {connectedUser}
+                  </span>
                 </div>
                 <button
                   onClick={handleDisconnect}
@@ -315,17 +317,42 @@ export default function OlimpoSorteadorApp() {
                 </button>
               </div>
             ) : (
-              <button
-                onClick={handleConnectInstagram}
-                disabled={isConnectingMeta}
-                className="btn-gold text-xs py-2 px-3.5 cursor-pointer shadow-lg"
-              >
-                <InstagramIcon className="w-3.5 h-3.5 text-[#2d0f2e]" />
-                <span>{isConnectingMeta ? "Conectando..." : "Conectar com Instagram"}</span>
-              </button>
+              <>
+                {/* Botão de Modo Demonstração no Topo */}
+                <button
+                  onClick={handleEnterDemoMode}
+                  title="Entrar em Modo Demonstração sem conectar credenciais"
+                  className="btn-purple text-xs py-2 px-2.5 sm:px-3.5 cursor-pointer shadow-sm hover:scale-102 transition-transform shrink-0 flex items-center gap-1.5"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-[#f8d292] shrink-0" />
+                  <span className="hidden md:inline">Modo Demonstração</span>
+                  <span className="hidden sm:inline md:hidden">Modo Demo</span>
+                  <span className="sm:hidden">Demo</span>
+                </button>
+
+                {/* Botão Conectar com Instagram */}
+                <button
+                  onClick={handleConnectInstagram}
+                  disabled={isConnectingMeta}
+                  title="Conectar com Instagram Oficial da Meta"
+                  className="btn-gold text-xs py-2 px-2.5 sm:px-3.5 cursor-pointer shadow-lg hover:scale-102 transition-transform shrink-0 flex items-center gap-1.5"
+                >
+                  <InstagramIcon className="w-3.5 h-3.5 text-[#2d0f2e] shrink-0" />
+                  <span>
+                    {isConnectingMeta ? (
+                      "Conectando..."
+                    ) : (
+                      <>
+                        <span className="hidden sm:inline">Conectar Instagram</span>
+                        <span className="sm:hidden">Conectar</span>
+                      </>
+                    )}
+                  </span>
+                </button>
+              </>
             )}
 
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#662771] to-[#f8d292] flex items-center justify-center font-bold text-xs text-[#2d0f2e]">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#662771] to-[#f8d292] hidden xs:flex items-center justify-center font-bold text-xs text-[#2d0f2e] shrink-0 shadow-md">
               OL
             </div>
           </div>
@@ -440,72 +467,36 @@ export default function OlimpoSorteadorApp() {
               </div>
             </div>
 
-            {/* Ações de Login */}
-            <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            {/* Ação Primária Centralizada (The "North Star" Action) */}
+            <div className="relative z-10 flex flex-col items-center justify-center gap-3 pt-2">
               <button
                 onClick={handleConnectInstagram}
                 disabled={isConnectingMeta}
-                className="btn-gold w-full sm:w-auto text-sm py-3.5 px-8 flex items-center justify-center gap-3 cursor-pointer shadow-xl hover:scale-102 transition-transform"
+                className="btn-gold w-full sm:w-auto text-sm sm:text-base py-3.5 sm:py-4 px-8 sm:px-12 flex items-center justify-center gap-3 cursor-pointer shadow-2xl hover:scale-102 transition-all"
               >
                 <InstagramIcon className="w-5 h-5 text-[#2d0f2e]" />
-                <span className="font-bold">
+                <span className="font-extrabold tracking-wide">
                   {isConnectingMeta ? "Iniciando Autorização Meta..." : "Conectar com Instagram Oficial"}
                 </span>
                 <ArrowRight className="w-4 h-4 text-[#2d0f2e]" />
               </button>
 
-              <button
-                onClick={handleEnterDemoMode}
-                className="btn-purple w-full sm:w-auto text-sm py-3.5 px-6 flex items-center justify-center gap-2 cursor-pointer hover:bg-white/10"
-              >
-                <Sparkles className="w-4 h-4 text-[#f8d292]" />
-                <span>Entrar em Modo Demonstração</span>
-              </button>
+              <p className="text-xs text-[#d8c3ad]/80 flex items-center gap-1.5 pt-1">
+                <span>Quer testar antes?</span>
+                <button
+                  onClick={handleEnterDemoMode}
+                  className="text-[#f8d292] hover:underline font-semibold cursor-pointer inline-flex items-center gap-1"
+                >
+                  <Sparkles className="w-3 h-3 text-[#f8d292]" />
+                  Acessar Modo Demonstração
+                </button>
+              </p>
             </div>
 
             <p className="text-[11px] text-[#d8c3ad]/70 relative z-10">
               🔒 Ao conectar, você será redirecionado para a tela oficial de login da Meta para conceder autorização aos comentários.
             </p>
           </section>
-
-          {/* Destaques de Arquitetura e Segurança */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="glass-card p-5 space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-[#662771]/60 flex items-center justify-center text-[#f8d292]">
-                <KeyRound className="w-4 h-4" />
-              </div>
-              <h3 className="text-xs font-bold text-white uppercase tracking-wider">
-                Auditoria Criptográfica
-              </h3>
-              <p className="text-xs text-[#d8c3ad] leading-relaxed">
-                Cada sorteio gera uma prova imutável em hash SHA-256 e embaralhamento Fisher-Yates server-side.
-              </p>
-            </div>
-
-            <div className="glass-card p-5 space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-[#662771]/60 flex items-center justify-center text-[#f8d292]">
-                <Database className="w-4 h-4" />
-              </div>
-              <h3 className="text-xs font-bold text-white uppercase tracking-wider">
-                Supabase Free Seguro
-              </h3>
-              <p className="text-xs text-[#d8c3ad] leading-relaxed">
-                Assets servidos via Vercel com zero egress de imagens no banco e purge automatizado após 30 dias.
-              </p>
-            </div>
-
-            <div className="glass-card p-5 space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-[#662771]/60 flex items-center justify-center text-[#f8d292]">
-                <ShieldCheck className="w-4 h-4" />
-              </div>
-              <h3 className="text-xs font-bold text-white uppercase tracking-wider">
-                API Oficial Meta v21.0
-              </h3>
-              <p className="text-xs text-[#d8c3ad] leading-relaxed">
-                Zero scraping e total conformidade com as diretrizes do Instagram para contas comerciais.
-              </p>
-            </div>
-          </div>
         </main>
       ) : (
         /* -------------------------------------------------------------------- */
@@ -533,7 +524,7 @@ export default function OlimpoSorteadorApp() {
                 <span className="gold-gradient-text">Instagram</span>
               </h1>
               <p className="text-sm sm:text-base text-[#d8c3ad] leading-relaxed">
-                Apurações 100% transparentes, sem raspagem de dados ou riscos de banimento para o perfil da Olimpo. Cada sorteio gera uma prova criptográfica imutável e respeita os limites estritos do Supabase Free.
+                Apurações 100% transparentes, sem raspagem de dados ou riscos de penalização para o perfil da Olimpo. Cada sorteio gera uma prova criptográfica imutável e auditável em tempo real.
               </p>
             </div>
           </section>
@@ -603,7 +594,7 @@ export default function OlimpoSorteadorApp() {
                     <span>Conexão Oficial Meta Graph API v21.0</span>
                   </div>
                   <p>
-                    Tokens criptografados com AES-256 no banco Supabase. Sem cópia de senhas e sem download de fotos de participantes.
+                    Tokens criptografados com AES-256 no banco de dados. Sem cópia de senhas e sem download de fotos de participantes.
                   </p>
                 </div>
               </div>
@@ -645,7 +636,7 @@ export default function OlimpoSorteadorApp() {
                     }`}
                   >
                     <BarChart3 className="w-3.5 h-3.5" />
-                    Cotas Supabase Free
+                    Auditoria &amp; Performance
                   </button>
                 </div>
 
@@ -772,14 +763,14 @@ export default function OlimpoSorteadorApp() {
                   <div className="space-y-4 animate-fadeIn">
                     <div className="p-4 rounded-xl bg-[#200a21]/60 border border-white/10 space-y-3">
                       <div className="flex items-center justify-between text-xs">
-                        <span className="text-[#d8c3ad]">Egress Supabase Free</span>
-                        <span className="font-bold text-[#f8d292]">0.8% da franquia (40 MB / 5.000 MB)</span>
+                        <span className="text-[#d8c3ad]">Tráfego &amp; Integridade da Nuvem</span>
+                        <span className="font-bold text-[#f8d292]">0.8% consumido (40 MB / 5.000 MB) • Excelente</span>
                       </div>
                       <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
                         <div className="h-full bg-gradient-to-r from-emerald-400 to-[#f8d292] w-[0.8%]" />
                       </div>
                       <p className="text-[11px] text-[#d8c3ad] leading-relaxed">
-                        💡 <strong>Guarda-Corpo Ativo:</strong> Todos os 14 SVGs e imagens da marca Olimpo são servidos estaticamente pela Vercel. Zero uso de storage do Supabase para avatares externos.
+                        💡 <strong>Guarda-Corpo Ativo:</strong> Todos os assets da marca Olimpo são servidos estaticamente através de CDN global de alta velocidade, garantindo apurações instantâneas.
                       </p>
                     </div>
                   </div>
@@ -903,22 +894,18 @@ export default function OlimpoSorteadorApp() {
       </AnimatePresence>
 
       {/* -------------------------------------------------------------------- */}
-      {/* FOOTER OFICIAL                                                       */}
+      {/* FOOTER OFICIAL INSTITUCIONAL                                         */}
       {/* -------------------------------------------------------------------- */}
       <footer className="border-t border-white/10 bg-[rgba(32,10,33,0.9)] py-6 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#d8c3ad]">
-          <div className="flex items-center gap-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#d8c3ad]">
+          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
             <span>© 2026 Olimpo Açaíteria &amp; Sorveteria</span>
-            <span>•</span>
+            <span className="text-white/30">•</span>
             <span>Desenvolvido pela VICCS Design</span>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-emerald-400 flex items-center gap-1 font-medium">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              Supabase Free Protegido
-            </span>
-            <span className="text-white/40">•</span>
-            <span>Meta Graph API Compliant</span>
+          <div className="flex items-center gap-2 text-[#d8c3ad]/70">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#f8d292]" />
+            <span>Ambiente Seguro • API Oficial Meta</span>
           </div>
         </div>
       </footer>

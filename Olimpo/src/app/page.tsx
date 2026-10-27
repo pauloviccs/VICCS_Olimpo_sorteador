@@ -125,13 +125,14 @@ export default function OlimpoSorteadorApp() {
     setConnectionError(null);
     try {
       const res = await fetch("/api/auth/meta/url");
-      const data = await res.json();
-      if (data.url) {
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.url) {
         window.location.href = data.url;
       } else {
-        setConnectionError(
-          "Não foi possível gerar a URL de autorização da Meta. Verifique as credenciais no .env.local."
-        );
+        const errorDetail =
+          data.error ||
+          "Não foi possível gerar a URL de autorização da Meta. Certifique-se de que as variáveis de ambiente foram configuradas na Vercel.";
+        setConnectionError(errorDetail);
         setIsConnectingMeta(false);
       }
     } catch {
@@ -344,14 +345,23 @@ export default function OlimpoSorteadorApp() {
               className="p-4 rounded-xl bg-red-950/50 border border-red-500/40 text-xs text-red-200 flex items-start gap-3"
             >
               <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
-              <div className="space-y-1">
+              <div className="space-y-1.5 flex-1">
                 <span className="font-bold text-red-300 block">
                   Aviso de Conexão com a Meta:
                 </span>
-                <p className="leading-relaxed">{connectionError}</p>
-                <p className="text-[11px] text-red-300/80">
-                  Dica: Verifique se o redirecionamento <code>http://localhost:3000/api/auth/meta/callback</code> está autorizado no painel de desenvolvedores da Meta ou use o Modo Demonstração abaixo para homologar a interface.
+                <p className="leading-relaxed font-mono bg-black/40 p-2 rounded border border-red-500/20 text-[11px] text-red-200 break-all">
+                  {connectionError}
                 </p>
+                <p className="text-[11px] text-red-300/90 leading-relaxed">
+                  💡 <strong>Solução Rápida:</strong> Certifique-se de que a URI de redirecionamento abaixo está autorizada no painel de desenvolvedores da Meta (<strong>Meta for Developers &gt; Seu App (ID: 28628987183389511) &gt; Caso de Uso Instagram / Login &gt; Configurações &gt; URIs de redirecionamento do OAuth válidos</strong>):
+                </p>
+                <div className="flex items-center gap-2 pt-0.5">
+                  <code className="text-[#f8d292] bg-black/60 px-2 py-1 rounded font-mono text-[11px] border border-white/10 select-all">
+                    {typeof window !== "undefined"
+                      ? `${window.location.origin}/api/auth/meta/callback`
+                      : "https://olimposorteador.vercel.app/api/auth/meta/callback"}
+                  </code>
+                </div>
               </div>
             </motion.div>
           )}

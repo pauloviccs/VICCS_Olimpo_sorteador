@@ -42,13 +42,19 @@ export interface CommentsPageResponse {
 /**
  * Gera a URL oficial de autorização OAuth da Meta
  */
-export function getMetaAuthUrl(state: string): string {
-  const appId = process.env.META_APP_ID;
-  const redirectUri = process.env.NEXT_PUBLIC_META_REDIRECT_URI;
+export function getMetaAuthUrl(state: string, customRedirectUri?: string): string {
+  const appId = process.env.META_APP_ID || "28628987183389511";
+  const rawRedirectUri =
+    customRedirectUri ||
+    process.env.NEXT_PUBLIC_META_REDIRECT_URI ||
+    "https://olimposorteador.vercel.app/api/auth/meta/callback";
+  
+  // Remove barra final para conformidade estrita com a Meta
+  const redirectUri = rawRedirectUri.replace(/\/$/, "");
   const authFlow = process.env.META_AUTH_FLOW || "facebook";
 
-  if (!appId || !redirectUri) {
-    throw new Error("META_APP_ID ou NEXT_PUBLIC_META_REDIRECT_URI não configurados.");
+  if (!appId) {
+    throw new Error("META_APP_ID não configurado.");
   }
 
   if (authFlow === "instagram") {
@@ -90,15 +96,28 @@ export function getMetaAuthUrl(state: string): string {
 /**
  * Troca o código temporário retornado no callback por um Short-Lived Access Token
  */
-export async function exchangeCodeForToken(code: string): Promise<string> {
-  const appId = process.env.META_APP_ID;
+export async function exchangeCodeForToken(
+  code: string,
+  customRedirectUri?: string
+): Promise<string> {
+  const appId = process.env.META_APP_ID || "28628987183389511";
   const appSecret = process.env.META_APP_SECRET;
-  const redirectUri = process.env.NEXT_PUBLIC_META_REDIRECT_URI;
+  const rawRedirectUri =
+    customRedirectUri ||
+    process.env.NEXT_PUBLIC_META_REDIRECT_URI ||
+    "https://olimposorteador.vercel.app/api/auth/meta/callback";
+  const redirectUri = rawRedirectUri.replace(/\/$/, "");
+
+  if (!appSecret) {
+    throw new Error(
+      "META_APP_SECRET não foi configurado nas variáveis de ambiente da Vercel. Por favor, adicione META_APP_SECRET nas Environment Variables do projeto na Vercel."
+    );
+  }
 
   const params = new URLSearchParams({
-    client_id: appId || "",
-    client_secret: appSecret || "",
-    redirect_uri: redirectUri || "",
+    client_id: appId,
+    client_secret: appSecret,
+    redirect_uri: redirectUri,
     code,
   });
 
@@ -118,14 +137,22 @@ export async function exchangeCodeForToken(code: string): Promise<string> {
 /**
  * Troca o token de curta duração por um Long-Lived Token (válido por ~60 dias)
  */
-export async function getLongLivedToken(shortLivedToken: string): Promise<{ token: string; expiresIn: number }> {
-  const appId = process.env.META_APP_ID;
+export async function getLongLivedToken(
+  shortLivedToken: string
+): Promise<{ token: string; expiresIn: number }> {
+  const appId = process.env.META_APP_ID || "28628987183389511";
   const appSecret = process.env.META_APP_SECRET;
+
+  if (!appSecret) {
+    throw new Error(
+      "META_APP_SECRET não configurado na Vercel para obtenção do Long-Lived Token."
+    );
+  }
 
   const params = new URLSearchParams({
     grant_type: "fb_exchange_token",
-    client_id: appId || "",
-    client_secret: appSecret || "",
+    client_id: appId,
+    client_secret: appSecret,
     fb_exchange_token: shortLivedToken,
   });
 
